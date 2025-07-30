@@ -5,11 +5,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 #Include an exclusive lock at pipeline level
-lockBehavior: sequential
+#lockBehavior: sequential
 
 stages:
 - stage: Build
   displayName: 'Build Stage'
+  lockBehavior: sequential
   jobs:
   - job: BuildJob
     displayName: 'Build Job'
