@@ -4,6 +4,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+#Include an exclusive lock at pipeline level
+lockBehavior: sequential
+
 stages:
 - stage: Build
   displayName: 'Build Stage'
