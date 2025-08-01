@@ -26,6 +26,7 @@ stages:
 - stage: Test
   displayName: 'Test Stage'
   dependsOn: Build
+  lockBehavior: sequential
   isSkippable: false
   jobs:
   - job: TestJob
@@ -37,6 +38,7 @@ stages:
 
 - stage: DeployToStaging
   displayName: 'Deploy to Staging'
+  lockBehavior: sequential
   dependsOn: Test
   jobs:
   - job: DeployStagingJob
