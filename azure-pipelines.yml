@@ -5,7 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 #Include an exclusive lock at pipeline level
-lockBehavior: sequential #(runs 1,2,3,4,5,6)
+#lockBehavior: sequential #(runs 1,2,3,4,5,6)
 #lockBehavior: runLatest
 
 stages:
