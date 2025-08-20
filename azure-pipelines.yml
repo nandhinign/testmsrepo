@@ -5,7 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 #Include an exclusive lock at pipeline level
-#lockBehavior: sequential #old(runs 1,2,3,4,5,6)
+lockBehavior: sequential #old(runs 1,2,3,4,5,6)
 #lockBehavior: runLatest
 
 stages:
@@ -41,14 +41,16 @@ stages:
   ##lockBehavior: sequential
   dependsOn: Test
   jobs:
-  - job: DeployStagingJob
+  - deployment: DeployStagingJob
+    environment: myenv
     displayName: 'Deploy to Staging Job'
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - script: |
-        echo "Build staging job..."
-      displayName: 'Build and deploy to staging'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+           - script: |
+              echo "Build staging job..."
+             displayName: 'Build and deploy to staging'
 
 - stage: DeployToProduction
   displayName: 'Deploy to Production'
