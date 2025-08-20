@@ -14,7 +14,6 @@ stages:
   #lockBehavior: sequential #old(runs 7,8,9)
   jobs:
   - job: BuildJob
-    #environment: myenv
     displayName: 'Build Job'
     steps:
     - script: |
